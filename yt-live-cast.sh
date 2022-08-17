@@ -36,6 +36,8 @@ sleep_max=60
 # cattコマンドのパス
 catt=$HOME/.local/bin/catt
 
+# 詳細メッセージの出力
+verbose=0
 
 # シグナル受信時クリーンアップ処理
 cleanup() {
@@ -121,7 +123,10 @@ execSleep()
 {
   sleeptime=$1
 
-  echo Sleep $sleeptime seconds. 1>&2
+  if [ $verbose -ge 1 ]
+  then
+    echo Sleep $sleeptime seconds. 1>&2
+  fi
 
   sleep $sleeptime &
 
@@ -151,8 +156,7 @@ child=
 tempfile=`mktemp`
 
 # 配信のURLを出力
-echo 1>&2
-echo live URL: $liveurl 1>&2
+echo Live URL: $liveurl 1>&2
 
 # 終了時に一時ファイルと子プロセスをクリーンアップするためシグナルをトラップ
 trap cleanup HUP INT QUIT TERM
@@ -160,7 +164,10 @@ trap cleanup HUP INT QUIT TERM
 # メインループ
 while true
 do
-  echo 1>&2
+  if [ $verbose -ge 1 ]
+  then
+    echo 1>&2
+  fi
 
   # HTMLを取得
   fetchHTML "$liveurl" $tempfile
@@ -190,9 +197,12 @@ do
   fi
 
   # 情報を出力
-  echo Status: $status 1>&2
-  echo Canonical URL: $url 1>&2
-  echo Start Time: $starttime 1>&2
+  if [ $verbose -ge 1 ]
+  then
+    echo Status: $status 1>&2
+    echo Canonical URL: $url 1>&2
+    echo Start Time: $starttime 1>&2
+  fi
 
   if [ \( \( "$url" != "$prevurl" \) -o \
     \( "$prevstatus" = "LIVE_STREAM_OFFLINE" \) -o \
