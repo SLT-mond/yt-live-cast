@@ -2,23 +2,16 @@
 
 ## 概要
 
-深夜のゲリラ配信対策として、YouTubeチャンネルの配信開始を検知して
-Google Cast対応デバイスにキャストするためのスクリプトです。
+深夜のゲリラ配信対策として、YouTubeチャンネルの配信開始を検知してGoogle Cast対応デバイスにキャストするためのスクリプトです。
 
-検知できるのは公開での配信のみで、
-限定公開やメンバー限定の配信、プレミア公開は検知できません。
+検知できるのは公開での配信のみで、限定公開やメンバー限定の配信、プレミア公開は検知できません。
 
 ## 準備
 
-HTMLの取得のために[curl](https://curl.se/)を、
-キャストと音量の設定のために
-[catt](https://github.com/skorokithakis/catt)を使用しますので、
-実行可能な状態にしておいてください。
+HTMLの取得のために[curl](https://curl.se/)を、キャストと音量の設定のために[catt](https://github.com/skorokithakis/catt)を使用しますので、実行可能な状態にしておいてください。
 
-キャスト先デバイスにはNest HubやChromecastのように
-YouTubeのキャストに対応したものを使用してください。
-Google HomeやChromecast Audioのようなオーディオのみのデバイスは
-YouTubeのキャストに対応していないため使用できません。
+キャスト先デバイスにはNest HubやChromecastのようにYouTubeのキャストに対応したものを使用してください。
+Google HomeやChromecast AudioのようなオーディオのみのデバイスはYouTubeのキャストに対応していないため使用できません。
 
 ## 設定
 
