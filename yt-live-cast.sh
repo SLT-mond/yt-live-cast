@@ -33,8 +33,8 @@ volume=100
 sleep_min=5
 sleep_max=60
 
-# cattコマンドのパス
-catt=$HOME/.local/bin/catt
+# cattコマンド
+catt=catt
 
 # 詳細メッセージの出力
 verbose=0
